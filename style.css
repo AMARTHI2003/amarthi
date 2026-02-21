@@ -928,8 +928,23 @@ body {
         right: 0;
     }
 
+    .navbar {
+        padding: 0.8rem 5%;
+    }
+
     .nav-actions {
-        order: -1;
+        gap: 0.8rem;
+    }
+
+    .blocks-btn {
+        display: none;
+        /* Hide in navbar on mobile, move to menu if needed */
+    }
+
+    .theme-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 
     .hero {
@@ -938,99 +953,85 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        padding: 0;
-        background: var(--bg-primary);
-        background-image: none;
-        /* Removed from container */
+        padding: 0 !important;
+        background: var(--bg-primary) !important;
+        background-image: none !important;
+        margin-bottom: 2rem;
     }
 
     .hero::before {
         content: '';
         width: 100%;
-        height: 55vh;
+        height: 50vh;
         background-image: url('./port.jpg');
         background-size: cover;
         background-position: center 20%;
         display: block;
-    }
-
-    [data-theme="dark"] .hero::before {
-        filter: brightness(0.8) contrast(1.1);
+        position: relative;
     }
 
     .hero-content {
-        width: 92%;
-        margin: -10vh auto 4rem;
-        /* Overlap image slightly */
-        background: rgba(255, 255, 255, 0.8);
+        width: 94%;
+        max-width: 450px;
+        margin: -8vh auto 2rem !important;
+        background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         padding: 2.5rem 1.5rem;
-        border-radius: 30px;
+        border-radius: 24px;
         border: 1px solid rgba(255, 255, 255, 0.4);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         z-index: 10;
-        animation: fadeInUp 1s ease-out;
+        text-align: center;
+        position: relative;
     }
 
     [data-theme="dark"] .hero-content {
         background: rgba(30, 41, 59, 0.9);
         border-color: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     }
 
     .hero-content h1 {
-        font-size: 2.2rem;
-        line-height: 1.1;
+        font-size: 2rem !important;
+        line-height: 1.2;
         margin-bottom: 1rem;
-        background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: var(--text-primary);
     }
 
     .hero-description {
-        font-size: 1rem;
-        margin: 0 auto 2.5rem;
-        color: var(--text-primary);
-        opacity: 0.9;
-    }
-
-    .section-title {
-        font-size: 2rem;
+        font-size: 0.95rem;
+        margin: 0 auto 2rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
     }
 
     .input-group {
         flex-direction: column;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(10px);
-        box-shadow: none;
-        border: 1px solid var(--border-color);
-        padding: 0.5rem;
-        margin: 0 auto;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
     }
 
     .input-group input {
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        margin-bottom: 0.75rem;
-        text-align: center;
-        width: 100%;
-        color: #1f2937;
-    }
-
-    [data-theme="dark"] .input-group input {
-        background: rgba(15, 23, 42, 0.6);
-        color: white;
+        display: none;
+        /* Hide email input on mobile for cleaner look */
     }
 
     .cta-btn {
         width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
     }
 
     .cv-download-link {
-        margin: 2rem auto 0;
-        display: inline-flex;
+        margin: 1rem auto 0;
+        display: flex;
+        width: fit-content;
+        font-size: 0.85rem;
+        padding: 0.8rem 1.2rem;
     }
 
     .skills-section,
@@ -1041,43 +1042,15 @@ body {
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding-top: 6rem;
-        min-height: 85vh;
+    .hero::before {
+        height: 45vh;
+    }
+
+    .hero-content {
+        padding: 2rem 1.25rem;
     }
 
     .hero-content h1 {
-        font-size: 2.2rem;
-    }
-
-    .logo {
-        font-size: 1.3rem;
-    }
-
-    .navbar {
-        padding: 1rem 5%;
-    }
-
-    .timeline {
-        padding-left: 1.5rem;
-    }
-
-    .timeline-item::before {
-        left: calc(-1.5rem - 6px);
-    }
-
-    .cert-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1.5rem;
-    }
-
-    .cert-icon {
-        margin-bottom: 1rem;
-    }
-
-    .cv-download-link {
-        font-size: 0.8rem;
-        padding: 0.7rem 1.2rem;
+        font-size: 1.8rem !important;
     }
 }
