@@ -1,4 +1,21 @@
 :root {
+    /* Dark Mode Variables (Default) */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-tertiary: #cbd5e1;
+    --accent-green: #34d399;
+    --accent-glow: rgba(52, 211, 153, 0.2);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --navbar-bg: rgba(15, 23, 42, 0.8);
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 25px 30px -5px rgba(0, 0, 0, 0.4);
+    --hero-gradient: linear-gradient(to right, #0f172a 25%, rgba(15, 23, 42, 0.7) 45%, rgba(15, 23, 42, 0.1) 70%);
+    --font-main: 'Outfit', sans-serif;
+}
+
+[data-theme="light"] {
     /* Light Mode Variables */
     --bg-primary: #f8fafc;
     --bg-secondary: #ffffff;
@@ -12,23 +29,6 @@
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
     --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
     --hero-gradient: linear-gradient(to right, #f8fafc 25%, rgba(248, 250, 252, 0.7) 45%, rgba(248, 250, 252, 0) 70%);
-    --font-main: 'Outfit', sans-serif;
-}
-
-[data-theme="dark"] {
-    /* Dark Mode Variables */
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-tertiary: #cbd5e1;
-    --accent-green: #34d399;
-    --accent-glow: rgba(52, 211, 153, 0.2);
-    --border-color: rgba(255, 255, 255, 0.1);
-    --navbar-bg: rgba(15, 23, 42, 0.8);
-    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-    --card-shadow-hover: 0 25px 30px -5px rgba(0, 0, 0, 0.4);
-    --hero-gradient: linear-gradient(to right, #0f172a 25%, rgba(15, 23, 42, 0.7) 45%, rgba(15, 23, 42, 0.1) 70%);
 }
 
 
@@ -44,6 +44,18 @@
         transform: translateY(0);
     }
 }
+
+@keyframes bgFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
 * {
     margin: 0;
@@ -227,12 +239,31 @@ body {
     width: 100%;
     min-height: 85vh;
     margin: 0;
-    background-image: var(--hero-gradient), url('./port.jpg');
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
     position: relative;
     margin-bottom: 4rem;
+    overflow: hidden;
+}
+
+@media (min-width: 1025px) {
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: var(--hero-gradient), url('./port1.png');
+        background-size: cover;
+        background-position: 35% center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        opacity: 0;
+        animation: bgFadeIn 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        
+        /* Smooth radial mask to fade all outer edges of the photo into the background */
+        -webkit-mask-image: radial-gradient(ellipse at 65% 50%, black 25%, transparent 75%);
+        mask-image: radial-gradient(ellipse at 65% 50%, black 25%, transparent 75%);
+    }
 }
 
 .hero-content {
